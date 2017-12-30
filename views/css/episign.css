@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+section {
+	margin-bottom: 2rem;
+}
+
+marquee {
+	margin: 0;
+	border: 1px solid #ced4da;
+	font-family: "Courier New", Verdana, "sans-serif";
+	font-size: 26px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.container {
+	margin-top: 50px;
+}
+
+.row {
+	margin-bottom: 2rem;
+}
+
+.col {
+}
+
+.form-group {
+}
