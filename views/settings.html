@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>EpiSign - Settings</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<!-- EpiSign CSS -->
+<link href="css/episign.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"><a class="navbar-brand" href="#">EpiSign</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+		 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
+      <li class="nav-item"><a class="nav-link" href="settings.html">Settings</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="container"> 
+  <!-- Start Row 1-->
+  <div class="row"> 
+    <!-- Start Port-->
+    <div class="col">
+      <h3>Panel's port</h3>
+      <form>
+        <div class="form-group">
+          <label for="changePort">Actual port : <span>XXXXX</span></label>
+          <input type="text" id="changePort" class="form-control" placeholder="New port">
+        </div>
+        <button type="submit" class="btn btn-primary">Change port</button>
+      </form>
+    </div>
+    <!-- End Port--> 
+    <!-- Start IP-->
+    <div class="col">
+      <h3>Panel's IP</h3>
+      <form>
+        <div class="form-group">
+          <label for="changeIP">Actual IP : <span>XXXXX</span></label>
+          <input type="text" id="changeIP" class="form-control" placeholder="New IP">
+        </div>
+        <button type="submit" class="btn btn-primary">Change IP</button>
+      </form>
+    </div>
+    <!-- End IP--> 
+  </div>
+  <!-- End Row 1--> 
+  
+  <!-- Start Row 2-->
+  <div class="row"> 
+    <!-- Start Password-->
+    <div class="col">
+      <h3>Panel's password</h3>
+      <form>
+        <div class="form-group">
+          <label for="changePassword">Change password :</label>
+          <input type="password" id="changePassword" class="form-control" placeholder="New password">
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm password :</label>
+          <input type="password" id="confirmPassword" class="form-control" placeholder="...">
+        </div>
+        <button type="submit" class="btn btn-primary">Change password</button>
+      </form>
+    </div>
+    <!-- End Password--> 
+  </div>
+  <!-- End Row 2--> 
+</main>
+</body>
+</html>
