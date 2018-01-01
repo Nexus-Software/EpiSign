@@ -1,0 +1,18 @@
+.right_home
+{
+	height:350px;
+	position :absolute;
+	right: 0;
+	width: 300px;
+}
+.body_home
+{
+	position : absolute;
+	left: 25%;
+	right: 25%;
+}
+.Text_home
+{
+	text-align:center;
+	font-size: 15px;
+}
