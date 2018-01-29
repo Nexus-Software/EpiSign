@@ -9,7 +9,7 @@ import (
 func main() {
 	app := iris.Default()
 
-	app.RegisterView(iris.HTML("./views", ".html").Layout("layout.html"))
+	app.RegisterView(iris.HTML("./views", ".html").Layout("layout.html").Reload(true))
 
 	// Method:   GET
 	// Resource: http://localhost:8080/
