@@ -7,7 +7,6 @@ import math
 import os
 import time
 import json
-import requests
 
 
 from rgbmatrix import Adafruit_RGBmatrix
@@ -68,11 +67,6 @@ while True:
 
     # Clear background
     draw.rectangle((0, 0, width, height), fill=(0, 0, 0))
-
-    url = 'http://localhost:9090/display'
-
-    resp = requests.get(url=url)
-    data = json.loads(resp.text)
 
     display("Projet Hub", "14h - U", "Desk", "14h")
 
