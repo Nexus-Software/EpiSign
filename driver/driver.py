@@ -12,6 +12,8 @@ import os
 import time
 import json
 import requests
+import threading
+
 
 from rgbmatrix import Adafruit_RGBmatrix
 
@@ -20,6 +22,7 @@ height = 32  # types (incl. tiling).  Other code may need tweaks.
 matrix = Adafruit_RGBmatrix(32, 2) # rows, chain length
 fps = 4
 url = 'http://172.20.10.3:9090/display'
+#url = 'http://127.0.0.1:9090/display'
 
 font = ImageFont.load(os.path.dirname(os.path.realpath(__file__)) + '/helvR08.pil')
 whiteColor = (255, 255, 255)
@@ -30,6 +33,7 @@ draw = ImageDraw.Draw(image)
 currentTime = 0.0
 prevTime = 0.0
 requestTime = 0.0
+data = []
 
 # Initialization done; loop forever
 
@@ -68,23 +72,32 @@ def display(text1, text2, text3, text4):
     text1Pos -= 1
     text2Pos -= 1
 
+def update_text():
+    global requestTime
+    global data
+    if requestTime == 0 or requestTime == 20:
+        resp = requests.get(url=url)
+        data = json.loads(resp.text)
+        requestTime = 0
+
+t = threading.Thread(target=update_text)
+t.start()
+
+resp = requests.get(url=url)
+data = json.loads(resp.text)
+
 while True:
 
     # Clear background
     draw.rectangle((0, 0, width, height), fill=(0, 0, 0))
 
-    if requestTime == 0 or requestTime == 20:
-    	resp = requests.get(url=url)
-    	data = json.loads(resp.text)
-	requestTime = 0
-
-    display(data['message']['1'], data['message']['2'], data['message']['3'], data['message']['4'])
+    display(data[0], data[1], data[2], data[3])
 
     # Offscreen buffer is copied to screen
     matrix.SetImage(image.im.id, 0, 0)
 
     # debug
-    # image.save("tmp.png")  # image.show()
+    #image.save("tmp.png")  # image.show()
 
     # wait
     currentTime = time.time()

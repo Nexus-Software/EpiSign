@@ -3,6 +3,7 @@ import simplejson
 import urllib2
 from flask import Flask
 from flask import json
+import operator
 
 app = Flask(__name__)
 
@@ -12,10 +13,11 @@ def make_display():
         "https://intra.epitech.eu/auth-7d3c35a078f73117aa5e6606fa25c727065e674a/planning/load?format=json&location=FR/MPL&semester=0,1,2,3,4,5,6&start=" + datetime.date.today().strftime(
             "%Y-%m-%d") + "&end=" + datetime.date.today().strftime("%Y-%m-%d"))
     data = simplejson.load(response)
+    data = sorted(data, key=lambda k: k['start'])
     messages = []
     for activity in data:
       dateStart = datetime.datetime.strptime(activity['start'], '%Y-%m-%d %H:%M:%S')
-      if (dateStart <= datetime.datetime.now()):
+      if (dateStart >= datetime.datetime.now()):
         messages.append(activity['acti_title'])
         l_2 = ((activity['start'].split(" ")[1][::-1]).split(":")[2])[::-1] + ":" + ((activity['start'].split(" ")[1][::-1]).split(":")[1])[::-1]
         if activity['room']:
