@@ -5,8 +5,6 @@
         <a class="list-group-item list-group-item-action ">Veuillez allez vous restaurer autre part</a>
         <a class="list-group-item list-group-item-action ">Mastering oral presentation | Part 5</a>
         <a class="list-group-item list-group-item-action ">11h00 en SM3</a>
-        <a class="btn btn-primary btn-block" href="#" role="button"><i class="fa fa-plus-square" aria-hidden="true"></i>
-            Adding new message</a>
     </div>
     <div class="col">
         <h5>CPU</h5>
@@ -37,6 +35,20 @@
 <br>
 <div class="row">
     <div class="col">
+        <form id="newMessage">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Message 1</label>
+                <input type="text" class="form-control" id="1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Message 2</label>
+                <input type="text" class="form-control" id="2">
+            </div>
+            <p id="post"></p>
+            <button id="newMessage" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col">
         <h4><i class="fa fa-comments" aria-hidden="true"></i> Message history</h4>
         <ul class="list-group">
             <li class="list-group-item">Noubliez pas de payer le voyage au ski !</li>
@@ -49,3 +61,24 @@
         </a>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#newMessage").click(function(){
+            /*
+            $.post(data: {'1': 'test', '2': 'test'}, url:"http://localhost:9090/send",
+                success: function(data){
+                $("#post").html(data);
+            },
+            error: function(){
+                $("#post").html('Une erreur est survenue.');
+            }
+            */
+            $.post("http://localhost:9090/send", {'1': 'test', '2': 'test'}, function(data, status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+            return false;
+        });
+    });
+</script>
