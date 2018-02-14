@@ -15,14 +15,14 @@ import requests
 import threading
 
 
-#from rgbmatrix import Adafruit_RGBmatrix
+from rgbmatrix import Adafruit_RGBmatrix
 
 width = 64  # Matrix size (pixels) -- change for different matrix
 height = 32  # types (incl. tiling).  Other code may need tweaks.
-#matrix = Adafruit_RGBmatrix(32, 2) # rows, chain length
+matrix = Adafruit_RGBmatrix(32, 2) # rows, chain length
 fps = 4
-#url = 'http://172.20.10.3:9090/display'
-url = 'http://127.0.0.1:9090/display'
+url = 'http://172.20.10.3:9090/display'
+#url = 'http://127.0.0.1:9090/display'
 
 font = ImageFont.load(os.path.dirname(os.path.realpath(__file__)) + '/helvR08.pil')
 whiteColor = (255, 255, 255)
@@ -96,10 +96,10 @@ while True:
     display(data[0], data[1], data[2], data[3])
 
     # Offscreen buffer is copied to screen
-    #matrix.SetImage(image.im.id, 0, 0)
+    matrix.SetImage(image.im.id, 0, 0)
 
     # debug
-    image.save("tmp.png")  # image.show()
+    #image.save("tmp.png")  # image.show()
 
     # wait
     currentTime = time.time()
