@@ -77,10 +77,9 @@ def update_text():
     global data
 
     while 1:
-        if requestTime >= 10.0:
-            resp = requests.get(url=url)
-            data = json.loads(resp.text)
-            requestTime = 0
+        resp = requests.get(url=url)
+        data = json.loads(resp.text)
+        time.sleep(10)
 
 t = threading.Thread(target=update_text)
 t.start()
